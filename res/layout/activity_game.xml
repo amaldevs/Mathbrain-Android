@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".GameActivity" >
+    tools:context=".GameActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         android:paddingBottom="@dimen/paddingWithHeading"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin" >
+        android:paddingTop="@dimen/activity_vertical_margin">
 
         <TextView
             android:id="@+id/textView4"
@@ -26,7 +26,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/textView1"
@@ -53,8 +53,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" >
-            </LinearLayout>
+                android:layout_weight="1"></LinearLayout>
 
             <TextView
                 android:id="@+id/textView3"
@@ -74,7 +73,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5" >
+            android:layout_weight="1.5">
 
             <TextView
                 android:id="@+id/question"
@@ -86,9 +85,9 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" >
+                android:layout_weight="1">
 
-                <TextView
+            <TextView
                     android:id="@+id/indicator"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -110,9 +109,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
-            <TextView
+        <TextView
                 android:id="@+id/scoreTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -133,15 +132,15 @@
             android:id="@+id/TableLayout1"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="16" >
+            android:layout_weight="16">
 
             <TableRow
                 android:id="@+id/TableRow1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" >
+                android:layout_weight="1">
 
-                <Button
+            <Button
                     android:id="@+id/button1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -177,9 +176,9 @@
                 android:id="@+id/TableRow2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" >
+                android:layout_weight="1">
 
-                <Button
+            <Button
                     android:id="@+id/button4"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -214,9 +213,9 @@
                 android:id="@+id/TableRow3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" >
+                android:layout_weight="1">
 
-                <Button
+            <Button
                     android:id="@+id/button7"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -251,9 +250,9 @@
                 android:id="@+id/TableRow4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" >
+                android:layout_weight="1">
 
-                <Button
+            <Button
                     android:id="@+id/buttonC"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -282,7 +281,7 @@
                     android:onClick="b_click"
                     android:text="@string/back"
                     android:textSize="@dimen/text30" />
-                
+
             </TableRow>
         </TableLayout>
 
@@ -291,9 +290,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center" >
+        android:gravity="center">
 
-        <Button
+    <Button
             android:id="@+id/buttonRefresh"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
@@ -301,13 +300,13 @@
             android:onClick="refresh_click" />
     </LinearLayout>
 
-	<LinearLayout
-	    android:id="@+id/adlayout"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:gravity="center|bottom"
-	    android:orientation="vertical" >
+    <LinearLayout
+        android:id="@+id/adlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|bottom"
+        android:orientation="vertical">
 
     </LinearLayout>
-    
-    </LinearLayout>
+
+</LinearLayout>
