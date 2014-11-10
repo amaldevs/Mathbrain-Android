@@ -6,6 +6,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
 
+
+import com.google.android.gms.ads.*;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -13,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 import android.text.Editable;
@@ -20,6 +24,10 @@ import android.content.Context;
 import android.content.Intent;
 
 public class ScoresActivity extends Activity {
+
+
+    private AdView adView;
+    LinearLayout layout;
 
 	TextView time,wrong,total,tname,div,comment;
 	EditText name;
@@ -35,7 +43,8 @@ public class ScoresActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_scores);
-		Intent intent=getIntent();
+        admob("ca-app-pub-3981454940982694/3879279160");
+        Intent intent=getIntent();
 		r=new Random();
 		String t=intent.getStringExtra(GameActivity.TotalTime);
 		String w=intent.getStringExtra(GameActivity.Wrong);
@@ -215,9 +224,20 @@ public class ScoresActivity extends Activity {
             }
         }
 		comment.setText(s);
-	}
-	
-	public void playClicked(View view)
+
+    }
+
+    private void admob(String adid) {
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId(adid);
+        layout = (LinearLayout) findViewById(R.id.adlayout);
+        layout.addView(adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+    }
+
+    public void playClicked(View view)
 	{
 		Intent intent=new Intent(this, GameActivity.class);
 		startActivity(intent);

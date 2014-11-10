@@ -1,7 +1,9 @@
 package com.fireworkshop.mathbrain;
 
 import java.io.File;
-import com.google.ads.*;
+
+import com.google.android.gms.ads.*;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -20,39 +22,41 @@ public class MainActivity extends Activity {
 	LinearLayout layout;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		if(file("fifth", "Job"))
-            if(file("fifthscore", "197.27"))
-                if(file("fourth", "Vikie"))
-                    if(file("fourthscore", "105.50"))
-                        if(file("third", "Luis"))
-                            if(file("thirdscore", "88.73"))
-                                if(file("second", "Li"))
-                                    if(file("secondscore", "74.41"))
-                                        if(file("first", "Kidu"))
-                                            if (file("firstscore", "60.15"))
-                                            { }
-		admob("a1525b78d6caaf4");
-	}
-	private void admob(String adid)
-	{
-		adView = new AdView(this, AdSize.BANNER, adid);
-		layout = (LinearLayout)findViewById(R.id.adlayout);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        if (file("fifth", "Job"))
+            if (file("fifthscore", "197.27"))
+                if (file("fourth", "Vikie"))
+                    if (file("fourthscore", "105.50"))
+                        if (file("third", "Luis"))
+                            if (file("thirdscore", "88.73"))
+                                if (file("second", "Li"))
+                                    if (file("secondscore", "74.41"))
+                                        if (file("first", "Kidu"))
+                                            if (file("firstscore", "60.15")) {
+                                            }
+        admob("ca-app-pub-3981454940982694/6972346366");
+    }
+
+    private void admob(String adid) {
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId(adid);
+        layout = (LinearLayout)findViewById(R.id.adlayout);
 		layout.addView(adView);
-		AdRequest adRequest = new AdRequest();
-		adView.loadAd(adRequest);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 	}
-	
-	@Override
-	  public void onDestroy() {
+
+    @Override
+    public void onDestroy() {
 	    if (adView != null) {
 	      adView.destroy();
 	    }
 	    super.onDestroy();
 	  }
-	
-	boolean file(String filename,String w)
+
+    boolean file(String filename, String w)
     {
         boolean status;
         String write=w;

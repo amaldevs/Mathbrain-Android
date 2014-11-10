@@ -2,9 +2,7 @@ package com.fireworkshop.mathbrain;
 
 import java.util.Random;
 
-import com.google.ads.AdRequest;
-import com.google.ads.AdSize;
-import com.google.ads.AdView;
+import com.google.android.gms.ads.*;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -36,8 +34,8 @@ public class GameActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
-		admob("a1525b78d6caaf4");
-		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        admob("ca-app-pub-3981454940982694/2402545967");
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		r=new Random();
 		time=(TextView) findViewById(R.id.time);
 		indicator=(TextView) findViewById(R.id.indicator);
@@ -48,16 +46,17 @@ public class GameActivity extends Activity {
 		start();
 	}
 
-	private void admob(String adid)
-	{
-		adView = new AdView(this, AdSize.BANNER, adid);
-		layout = (LinearLayout)findViewById(R.id.adlayout);
-		layout.addView(adView);
-		AdRequest adRequest = new AdRequest();
-		adView.loadAd(adRequest);
-	}
-	
-	@Override
+    private void admob(String adid) {
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId(adid);
+        layout = (LinearLayout) findViewById(R.id.adlayout);
+        layout.addView(adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+    }
+
+    @Override
 	  public void onDestroy() {
 	    if (adView != null) {
 	      adView.destroy();

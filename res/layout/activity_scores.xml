@@ -155,6 +155,7 @@
             android:inputType="textPersonName"
             android:singleLine="true"
             android:textColor="@color/white"
+            android:background="@color/grey"
             android:textSize="@dimen/text24" />
 
     </TableRow>
@@ -187,6 +188,15 @@
         android:onClick="playClicked"
         android:text="@string/playAgain"
         android:textSize="@dimen/text30" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/adlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|bottom"
+        android:orientation="vertical">
 
     </LinearLayout>
 

@@ -5,9 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import com.google.ads.AdRequest;
-import com.google.ads.AdSize;
-import com.google.ads.AdView;
+import com.google.android.gms.ads.*;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -22,7 +20,8 @@ import android.content.Intent;
 
 public class HighscoresActivity extends Activity {
 
-	private AdView adView;
+    private InterstitialAd interstitial;
+    private AdView adView;
 	LinearLayout layout;
 	String n1, n2, n3, n4, n5, n, s1, s2, s3,s4,s5, s;
 	TextView first,firstscore,second,secondscore,third,thirdscore,fourth,fourthscore,fifth,fifthscore;
@@ -30,8 +29,8 @@ public class HighscoresActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_highscores);
-		admob("a1525b78d6caaf4");
-		first=(TextView)findViewById(R.id.first);
+        admob("ca-app-pub-3981454940982694/5356012364");
+        first=(TextView)findViewById(R.id.first);
 		firstscore=(TextView)findViewById(R.id.firstscore);
 		second=(TextView)findViewById(R.id.second);
 		secondscore=(TextView)findViewById(R.id.secondscore);
@@ -126,17 +125,40 @@ public class HighscoresActivity extends Activity {
         fifth.setText(n5);
         fifthscore.setText(rfile("fifthscore"));
 
-	}
-	
+        loadInterstiatialAd("ca-app-pub-3981454940982694/5495613165");
+    }
 
-	private void admob(String adid)
-	{
-		adView = new AdView(this, AdSize.BANNER, adid);
-		layout = (LinearLayout)findViewById(R.id.adlayout);
-		layout.addView(adView);
-		AdRequest adRequest = new AdRequest();
-		adView.loadAd(adRequest);
-	}
+    private void loadInterstiatialAd(String adid) {
+        interstitial = new InterstitialAd(this);
+        interstitial.setAdUnitId(adid);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        interstitial.loadAd(adRequest);
+    }
+
+    public void displayInterstitial() {
+        if (interstitial.isLoaded()) {
+            interstitial.show();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        displayInterstitial();
+        super.onBackPressed();
+    }
+
+
+    private void admob(String adid) {
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId(adid);
+        layout = (LinearLayout) findViewById(R.id.adlayout);
+        layout.addView(adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+    }
 
 
 	String rfile(String filename)
