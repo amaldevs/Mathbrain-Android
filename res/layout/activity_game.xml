@@ -1,0 +1,313 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".GameActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="16"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/paddingWithHeading"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="@dimen/appNameActivity" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gameQuestion"
+                android:textSize="@dimen/text20" />
+
+            <TextView
+                android:id="@+id/questionNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text20" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gameTotal30"
+                android:textSize="@dimen/text20" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gameWrong"
+                android:textSize="@dimen/text20" />
+
+            <TextView
+                android:id="@+id/wrong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="@dimen/text20" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5" >
+
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Question"
+                android:textSize="@dimen/text30" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="@dimen/text30" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text24" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/scoreTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/equal"
+                android:textSize="@dimen/text30" />
+
+            <TextView
+                android:id="@+id/answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Answer"
+                android:textSize="@dimen/text30" />
+        </LinearLayout>
+
+        <TableLayout
+            android:id="@+id/TableLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="16" >
+
+            <TableRow
+                android:id="@+id/TableRow1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/gameButtonMargin"
+                    android:layout_weight="1"
+                    android:onClick="_1_click"
+                    android:text="@string/n1"
+                    android:textSize="@dimen/text30" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/gameButtonMargin"
+                    android:layout_weight="1"
+                    android:onClick="_2_click"
+                    android:text="@string/n2"
+                    android:textSize="@dimen/text30" />
+
+                <Button
+                    android:id="@+id/button3"
+                    style="@dimen/text30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/gameButtonMargin"
+                    android:layout_weight="1"
+                    android:onClick="_3_click"
+                    android:text="@string/n3"
+                    android:textSize="@dimen/text30" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/TableRow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/gameButtonMargin"
+                    android:layout_weight="1"
+                    android:onClick="_4_click"
+                    android:text="@string/n4"
+                    android:textSize="@dimen/text30" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/gameButtonMargin"
+                    android:layout_weight="1"
+                    android:onClick="_5_click"
+                    android:text="@string/n5"
+                    android:textSize="@dimen/text30" />
+
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/gameButtonMargin"
+                    android:layout_weight="1"
+                    android:onClick="_6_click"
+                    android:text="@string/n6"
+                    android:textSize="@dimen/text30" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/TableRow3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <Button
+                    android:id="@+id/button7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/gameButtonMargin"
+                    android:layout_weight="1"
+                    android:onClick="_7_click"
+                    android:text="@string/n7"
+                    android:textSize="@dimen/text30" />
+
+                <Button
+                    android:id="@+id/button8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/gameButtonMargin"
+                    android:layout_weight="1"
+                    android:onClick="_8_click"
+                    android:text="@string/n8"
+                    android:textSize="@dimen/text30" />
+
+                <Button
+                    android:id="@+id/button9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/gameButtonMargin"
+                    android:layout_weight="1"
+                    android:onClick="_9_click"
+                    android:text="@string/n9"
+                    android:textSize="@dimen/text30" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/TableRow4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <Button
+                    android:id="@+id/buttonC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/gameButtonMargin"
+                    android:layout_weight="1"
+                    android:onClick="C_click"
+                    android:text="@string/c"
+                    android:textSize="@dimen/text30" />
+
+                <Button
+                    android:id="@+id/button0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/gameButtonMargin"
+                    android:layout_weight="1"
+                    android:onClick="_0_click"
+                    android:text="@string/n0"
+                    android:textSize="@dimen/text30" />
+
+                <Button
+                    android:id="@+id/buttonBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/gameButtonMargin"
+                    android:layout_weight="1"
+                    android:onClick="b_click"
+                    android:text="@string/back"
+                    android:textSize="@dimen/text30" />
+                
+            </TableRow>
+        </TableLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/buttonRefresh"
+            android:layout_width="@dimen/buttonSize"
+            android:layout_height="@dimen/buttonSize"
+            android:background="@drawable/refresh"
+            android:onClick="refresh_click" />
+    </LinearLayout>
+
+	<LinearLayout
+	    android:id="@+id/adlayout"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center|bottom"
+	    android:orientation="vertical" >
+
+    </LinearLayout>
+    
+    </LinearLayout>

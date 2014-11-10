@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fireworkshop.mathbrain"
+    android:versionCode="3"
+    android:versionName="1.2" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.fireworkshop.mathbrain.MainActivity"
+            android:label="@string/app_name"
+            android:parentActivityName="com.fireworkshop.mathbrain.SplashActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fireworkshop.mathbrain.SplashActivity" />
+        </activity>
+        <activity
+            android:name="com.fireworkshop.mathbrain.GameActivity"
+            android:label="@string/title_activity_game"
+            android:parentActivityName="com.fireworkshop.mathbrain.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fireworkshop.mathbrain.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.fireworkshop.mathbrain.HighscoresActivity"
+            android:label="@string/title_activity_highscores"
+            android:parentActivityName="com.fireworkshop.mathbrain.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fireworkshop.mathbrain.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.fireworkshop.mathbrain.HelpActivity"
+            android:label="@string/title_activity_help"
+            android:parentActivityName="com.fireworkshop.mathbrain.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fireworkshop.mathbrain.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.fireworkshop.mathbrain.CreditsActivity"
+            android:label="@string/title_activity_credits"
+            android:parentActivityName="com.fireworkshop.mathbrain.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fireworkshop.mathbrain.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.fireworkshop.mathbrain.ScoresActivity"
+            android:label="@string/title_activity_scores"
+            android:parentActivityName="com.fireworkshop.mathbrain.GameActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fireworkshop.mathbrain.GameActivity" />
+        </activity>
+        <activity
+            android:name="com.fireworkshop.mathbrain.PanoramaActivity"
+            android:label="@string/title_activity_panorama"
+            android:parentActivityName="com.fireworkshop.mathbrain.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fireworkshop.mathbrain.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.google.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+        <activity
+            android:name="com.fireworkshop.mathbrain.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

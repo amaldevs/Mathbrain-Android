@@ -1,0 +1,43 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:buttonStyle">@style/buttonSt</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:background">@color/black</item>
+        
+    	<item name="android:windowNoTitle">true</item>
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
+    <style name="buttonSt" parent="@android:style/Widget.Button">
+        <item name="android:background">@color/red</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:typeface">sans</item>
+    </style>
+    
+    
+    <dimen name="hsSize">35sp</dimen>
+    <dimen name="text20">40sp</dimen>
+    <dimen name="text24">50sp</dimen>
+    <dimen name="text30">60sp</dimen>
+    <dimen name="mainHeading">100sp</dimen>
+    <dimen name="activityHeading">40sp</dimen>
+    <dimen name="buttonSize">80dp</dimen>
+    <dimen name="mainLayoutHeight">600dp</dimen>
+    <dimen name="mainLayoutWeight">400dp</dimen>
+    <dimen name="appNameActivity">27sp</dimen>
+</resources>
