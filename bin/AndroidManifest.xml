@@ -21,7 +21,7 @@
             android:label="@string/app_name"
             android:parentActivityName="com.fireworkshop.mathbrain.SplashActivity" >
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:name="androidx.core.app.NavUtils.PARENT_ACTIVITY"
                 android:value="com.fireworkshop.mathbrain.SplashActivity" />
         </activity>
         <activity
@@ -29,7 +29,7 @@
             android:label="@string/title_activity_game"
             android:parentActivityName="com.fireworkshop.mathbrain.MainActivity" >
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:name="androidx.core.app.NavUtils.PARENT_ACTIVITY"
                 android:value="com.fireworkshop.mathbrain.MainActivity" />
         </activity>
         <activity
@@ -37,7 +37,7 @@
             android:label="@string/title_activity_highscores"
             android:parentActivityName="com.fireworkshop.mathbrain.MainActivity" >
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:name="androidx.core.app.NavUtils.PARENT_ACTIVITY"
                 android:value="com.fireworkshop.mathbrain.MainActivity" />
         </activity>
         <activity
@@ -45,7 +45,7 @@
             android:label="@string/title_activity_help"
             android:parentActivityName="com.fireworkshop.mathbrain.MainActivity" >
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:name="androidx.core.app.NavUtils.PARENT_ACTIVITY"
                 android:value="com.fireworkshop.mathbrain.MainActivity" />
         </activity>
         <activity
@@ -53,7 +53,7 @@
             android:label="@string/title_activity_credits"
             android:parentActivityName="com.fireworkshop.mathbrain.MainActivity" >
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:name="androidx.core.app.NavUtils.PARENT_ACTIVITY"
                 android:value="com.fireworkshop.mathbrain.MainActivity" />
         </activity>
         <activity
@@ -61,7 +61,7 @@
             android:label="@string/title_activity_scores"
             android:parentActivityName="com.fireworkshop.mathbrain.GameActivity" >
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:name="androidx.core.app.NavUtils.PARENT_ACTIVITY"
                 android:value="com.fireworkshop.mathbrain.GameActivity" />
         </activity>
         <activity
@@ -69,7 +69,7 @@
             android:label="@string/title_activity_panorama"
             android:parentActivityName="com.fireworkshop.mathbrain.MainActivity" >
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+                android:name="androidx.core.app.NavUtils.PARENT_ACTIVITY"
                 android:value="com.fireworkshop.mathbrain.MainActivity" />
         </activity>
         <activity

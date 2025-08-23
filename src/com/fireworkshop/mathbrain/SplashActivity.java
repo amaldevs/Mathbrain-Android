@@ -2,10 +2,10 @@ package com.fireworkshop.mathbrain;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 
-public class SplashActivity extends Activity {
+public class SplashActivity extends AppCompatActivity {
 
     private static int SPLASH_TIME_OUT = 3000;
  
