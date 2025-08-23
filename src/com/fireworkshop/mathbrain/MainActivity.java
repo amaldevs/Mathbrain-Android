@@ -1,15 +1,10 @@
 package com.fireworkshop.mathbrain;
 
-import java.io.File;
-
 import com.google.android.gms.ads.*;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import com.fireworkshop.mathbrain.HighScoreRepository;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,17 +19,10 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (file("fifth", "Job"))
-            if (file("fifthscore", "197.27"))
-                if (file("fourth", "Vikie"))
-                    if (file("fourthscore", "105.50"))
-                        if (file("third", "Luis"))
-                            if (file("thirdscore", "88.73"))
-                                if (file("second", "Li"))
-                                    if (file("secondscore", "74.41"))
-                                        if (file("first", "Kidu"))
-                                            if (file("firstscore", "60.15")) {
-                                            }
+
+        HighScoreRepository repository = new HighScoreRepository(this);
+        repository.ensureDefaults();
+
         admob("ca-app-pub-3981454940982694/6972346366");
     }
 
@@ -56,39 +44,6 @@ public class MainActivity extends AppCompatActivity {
 	    super.onDestroy();
 	  }
 
-    boolean file(String filename, String w)
-    {
-        boolean status;
-        String write=w;
-        File file = getBaseContext().getFileStreamPath(filename);
-        if(!file.exists()){
-            status= true;
-            FileOutputStream fos=null;
-            try {
-    			fos=openFileOutput(filename, Context.MODE_PRIVATE);
-    			fos.write(write.trim().getBytes());
-    		} catch (FileNotFoundException e) {
-    			// TODO Auto-generated catch block
-    			e.printStackTrace();
-    		}catch (IOException e) {
-    			// TODO Auto-generated catch block
-    			e.printStackTrace();
-    		}
-    		finally{
-    			if(fos!=null)
-    				try {
-    					fos.close();
-    				} catch (IOException e) {
-    					// TODO Auto-generated catch block
-    					e.printStackTrace();
-    				}
-    		}
-        }
-        else{
-            status = false;
-        }   
-        return status;
-    }
 	
 	
 	@Override

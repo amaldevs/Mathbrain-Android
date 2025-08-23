@@ -1,9 +1,5 @@
 package com.fireworkshop.mathbrain;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.Random;
 
 
@@ -19,7 +15,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.text.Editable;
-import android.content.Context;
 import android.content.Intent;
 
 public class ScoresActivity extends AppCompatActivity {
@@ -31,20 +26,20 @@ public class ScoresActivity extends AppCompatActivity {
 	TextView time,wrong,total,tname,div,comment;
 	EditText name;
 	Button hs,play;
-	Boolean savestatus;
-	byte[] b;
-	int c;
-	String s;
-	float tot;
-	Random r;
-	FileInputStream fis;
+        Boolean savestatus;
+        int c;
+        String s;
+        float tot;
+        Random r;
+        HighScoreRepository repository;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_scores);
         admob("ca-app-pub-3981454940982694/3879279160");
         Intent intent=getIntent();
-		r=new Random();
+                repository = new HighScoreRepository(this);
+                r=new Random();
 		String t=intent.getStringExtra(GameActivity.TotalTime);
 		String w=intent.getStringExtra(GameActivity.Wrong);
 		time=(TextView)findViewById(R.id.scoreTime);
@@ -56,62 +51,27 @@ public class ScoresActivity extends AppCompatActivity {
 		play=(Button)findViewById(R.id.scorePlayAgain);
 		div=(TextView)findViewById(R.id.textViewDiv);
 		comment=(TextView)findViewById(R.id.scoreComment);
-		time.setText(t);
-		wrong.setText(w);
-		tot=(int)(Float.valueOf(t)*100.0)+(int)(Integer.valueOf(w)*100.0);
-		tot=(float) (tot/100.0);
-		total.setText(String.valueOf(tot));
-		name.setText("");
-		name.setVisibility(View.GONE);
-		tname.setVisibility(View.GONE);
-		div.setVisibility(View.GONE);
-		savestatus=false;
-		hs.setText("Highscores");
-		try {
-			fis=openFileInput("prevname");
-			b=new byte[10];
-			if(fis.read(b)!=-1)
-			{
-				String tem=new String(b).trim();
-				name.setText(tem);
-			}
-		} catch (FileNotFoundException e) {
-		} catch (IOException e) {
-		}
-		finally{
-			if(fis!=null)
-				try {
-					fis.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		}
-		String fifth="";
-		try {
-			fis=openFileInput("fifthscore");
-			b=new byte[10];
-			if(fis.read(b)!=-1)
-			{
-				fifth=new String(b);
-			}
-		} catch (FileNotFoundException e) {
-		} catch (IOException e) {
-		}
-		finally{
-			if(fis!=null)
-				try {
-					fis.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		}
-		int status=0;
-		if(fifth=="" || tot < Float.valueOf(fifth))
-		{
-			c=rnd(0,5);
-			 switch (c)
+                time.setText(t);
+                wrong.setText(w);
+                tot=(int)(Float.valueOf(t)*100.0)+(int)(Integer.valueOf(w)*100.0);
+                tot=(float) (tot/100.0);
+                total.setText(String.valueOf(tot));
+                name.setText("");
+                name.setVisibility(View.GONE);
+                tname.setVisibility(View.GONE);
+                div.setVisibility(View.GONE);
+                savestatus=false;
+                hs.setText("Highscores");
+                String tem = repository.getPreviousName();
+                if(!tem.equals("")) {
+                        name.setText(tem);
+                }
+                String fifth = repository.getHighScoreScore(5);
+                int status=0;
+                if(fifth=="" || tot < Float.valueOf(fifth))
+                {
+                        c=rnd(0,5);
+                         switch (c)
              {
                  case 0: s = "Well done!!!";
                  break;
@@ -126,40 +86,21 @@ public class ScoresActivity extends AppCompatActivity {
                  break;
              }
              status = 1;
-             String first="";
-             try {
-     			fis=openFileInput("firstscore");
-     			b=new byte[10];
-     			if(fis.read(b)!=-1)
-     			{
-     				first=new String(b);
-     			}
-     		} catch (FileNotFoundException e) {
-     		} catch (IOException e) {
-     		}
-     		finally{
-     			if(fis!=null)
-     				try {
-     					fis.close();
-     				} catch (IOException e) {
-     					// TODO Auto-generated catch block
-     					e.printStackTrace();
-     				}
-     		}
+             String first = repository.getHighScoreScore(1);
             if (first == "" || tot < Float.valueOf(first))
              {
                  s = "New Highscore";
                  status = 2;
              }
             name.setVisibility(View.VISIBLE);
-     		tname.setVisibility(View.VISIBLE);
-     		div.setVisibility(View.VISIBLE);
-     		savestatus=true;
-     		hs.setText("Save Score");
-		}
-		else
-		{
-			c = rnd(0, 4);
+                tname.setVisibility(View.VISIBLE);
+                div.setVisibility(View.VISIBLE);
+                savestatus=true;
+                hs.setText("Save Score");
+                }
+                else
+                {
+                        c = rnd(0, 4);
             switch (c)
             {
                 case 0: s = "Good job, not your best :)";
@@ -171,8 +112,8 @@ public class ScoresActivity extends AppCompatActivity {
                 default: s = "See you soon in the list";
                     break;
             }
-		}
-		if (tot < 61)
+                }
+                if (tot < 61)
         {
             if (status > 0)
             {
@@ -222,7 +163,7 @@ public class ScoresActivity extends AppCompatActivity {
                 s = "Good job, but seen better!";
             }
         }
-		comment.setText(s);
+                comment.setText(s);
 
     }
 
@@ -243,79 +184,23 @@ public class ScoresActivity extends AppCompatActivity {
 		finish();
 	}
 	
-	public void hsClicked(View view)
-	{
-		FileOutputStream fos=null;
-		if(savestatus)
-		{
-			try {
-				fos=openFileOutput("prevname", Context.MODE_PRIVATE);
-				Editable editable=name.getText();
-				String s=editable.toString().trim();
-				fos.write(s.getBytes());
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			finally{
-				if(fos!=null)
-					try {
-						fos.close();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-			}
-			try {
-				fos=openFileOutput("newscore", Context.MODE_PRIVATE);
-				fos.write(total.getText().toString().getBytes());
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			finally{
-				if(fos!=null)
-					try {
-						fos.close();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-			}
-					
-		}
-		else
-		{
-			try {
-				fos=openFileOutput("newscore", Context.MODE_PRIVATE);
-				fos.write("".getBytes());
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			finally{
-				if(fos!=null)
-					try {
-						fos.close();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-			}
-		}
-		Intent intent=new Intent(this, HighscoresActivity.class);
-		startActivity(intent);
-		finish();
-	}
+        public void hsClicked(View view)
+        {
+                if(savestatus)
+                {
+                        Editable editable=name.getText();
+                        String s=editable.toString().trim();
+                        repository.setPreviousName(s);
+                        repository.setPendingScore(total.getText().toString());
+                }
+                else
+                {
+                        repository.setPendingScore("");
+                }
+                Intent intent=new Intent(this, HighscoresActivity.class);
+                startActivity(intent);
+                finish();
+        }
 	
 	private int rnd(int min,int max)
 	{

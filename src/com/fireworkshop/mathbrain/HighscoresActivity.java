@@ -1,10 +1,5 @@
 package com.fireworkshop.mathbrain;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 import com.google.android.gms.ads.*;
 
 import android.os.Bundle;
@@ -14,47 +9,48 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.content.Context;
 import android.content.Intent;
 
 public class HighscoresActivity extends AppCompatActivity {
 
     private InterstitialAd interstitial;
     private AdView adView;
-	LinearLayout layout;
-	String n1, n2, n3, n4, n5, n, s1, s2, s3,s4,s5, s;
-	TextView first,firstscore,second,secondscore,third,thirdscore,fourth,fourthscore,fifth,fifthscore;
+        LinearLayout layout;
+        String n1, n2, n3, n4, n5, n, s1, s2, s3,s4,s5, s;
+        TextView first,firstscore,second,secondscore,third,thirdscore,fourth,fourthscore,fifth,fifthscore;
+        HighScoreRepository repository;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_highscores);
         admob("ca-app-pub-3981454940982694/5356012364");
+        repository = new HighScoreRepository(this);
         first=(TextView)findViewById(R.id.first);
-		firstscore=(TextView)findViewById(R.id.firstscore);
-		second=(TextView)findViewById(R.id.second);
-		secondscore=(TextView)findViewById(R.id.secondscore);
-		third=(TextView)findViewById(R.id.third);
-		thirdscore=(TextView)findViewById(R.id.thirdscore);
-		fourth=(TextView)findViewById(R.id.fourth);
-		fourthscore=(TextView)findViewById(R.id.fourthscore);
-		fifth=(TextView)findViewById(R.id.fifth);
-		fifthscore=(TextView)findViewById(R.id.fifthscore);
-		
-		n1 = rfile("first");
-        s1 = rfile("firstscore");
-        n2 = rfile("second");
-        s2 = rfile("secondscore");
-        n3 = rfile("third");
-        s3 = rfile("thirdscore");
-        n4 = rfile("fourth");
-        s4 = rfile("fourthscore");
-        n5 = rfile("fifth");
-        s5 = rfile("fifthscore");
-        s=rfile("newscore");
-        if(s!="")
+                firstscore=(TextView)findViewById(R.id.firstscore);
+                second=(TextView)findViewById(R.id.second);
+                secondscore=(TextView)findViewById(R.id.secondscore);
+                third=(TextView)findViewById(R.id.third);
+                thirdscore=(TextView)findViewById(R.id.thirdscore);
+                fourth=(TextView)findViewById(R.id.fourth);
+                fourthscore=(TextView)findViewById(R.id.fourthscore);
+                fifth=(TextView)findViewById(R.id.fifth);
+                fifthscore=(TextView)findViewById(R.id.fifthscore);
+
+                n1 = repository.getHighScoreName(1);
+        s1 = repository.getHighScoreScore(1);
+        n2 = repository.getHighScoreName(2);
+        s2 = repository.getHighScoreScore(2);
+        n3 = repository.getHighScoreName(3);
+        s3 = repository.getHighScoreScore(3);
+        n4 = repository.getHighScoreName(4);
+        s4 = repository.getHighScoreScore(4);
+        n5 = repository.getHighScoreName(5);
+        s5 = repository.getHighScoreScore(5);
+        s=repository.getPendingScore();
+        if(!s.equals(""))
         {
-        	float sf=Float.valueOf(s);
-            n=rfile("prevname");
+                float sf=Float.valueOf(s);
+            n=repository.getPreviousName();
 
             if (s1 == "" || (sf < Float.valueOf(s1)))
             {
@@ -101,28 +97,28 @@ public class HighscoresActivity extends AppCompatActivity {
                 s5 = s;
                 n5 = n;
             }
-            wfile("first", n1);
-            wfile("second", n2);
-            wfile("third", n3);
-            wfile("fourth", n4);
-            wfile("fifth", n5);
-            wfile("firstscore", s1);
-            wfile("secondscore", s2);
-            wfile("thirdscore", s3);
-            wfile("fourthscore", s4);
-            wfile("fifthscore", s5);
-            wfile("newscore", "");
+            repository.setHighScoreName(1, n1);
+            repository.setHighScoreName(2, n2);
+            repository.setHighScoreName(3, n3);
+            repository.setHighScoreName(4, n4);
+            repository.setHighScoreName(5, n5);
+            repository.setHighScoreScore(1, s1);
+            repository.setHighScoreScore(2, s2);
+            repository.setHighScoreScore(3, s3);
+            repository.setHighScoreScore(4, s4);
+            repository.setHighScoreScore(5, s5);
+            repository.clearPendingScore();
         }
         first.setText(n1);
-        firstscore.setText(rfile("firstscore"));
+        firstscore.setText(s1);
         second.setText(n2);
-        secondscore.setText(rfile("secondscore"));
+        secondscore.setText(s2);
         third.setText(n3);
-        thirdscore.setText(rfile("thirdscore"));
+        thirdscore.setText(s3);
         fourth.setText(n4);
-        fourthscore.setText(rfile("fourthscore"));
+        fourthscore.setText(s4);
         fifth.setText(n5);
-        fifthscore.setText(rfile("fifthscore"));
+        fifthscore.setText(s5);
 
         loadInterstiatialAd("ca-app-pub-3981454940982694/5495613165");
     }
@@ -158,62 +154,6 @@ public class HighscoresActivity extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
     }
-
-
-	String rfile(String filename)
-    {
-		String read;
-        FileInputStream fis=null;
-        byte[] b;
-            try {
-    			fis=openFileInput(filename);
-    			b=new byte[15];
-    			if(fis.read(b)!=-1)
-    			{
-    				read=new String(b);
-    				read=read.trim();
-    				return read;
-    			}
-    			else
-    				return "";
-    		} catch (FileNotFoundException e) {
-    		} catch (IOException e) {
-    		}
-    		finally{
-    			if(fis!=null)
-    				try {
-    					fis.close();
-    				} catch (IOException e) {
-    					// TODO Auto-generated catch block
-    					e.printStackTrace();
-    				}
-    		}
-        return "";
-    }
-    void wfile(String filename,String write)
-    {
-    	FileOutputStream fos=null;
-        try {
-			fos=openFileOutput(filename, Context.MODE_PRIVATE);
-			fos.write(write.trim().getBytes());
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		finally{
-			if(fos!=null)
-				try {
-					fos.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		}        
-    }
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
