@@ -7,7 +7,9 @@ import androidx.test.core.app.ApplicationProvider
 import app.cash.paparazzi.Paparazzi
 import org.junit.Rule
 import org.junit.Test
+import org.junit.Ignore
 
+@Ignore("Requires instrumentation environment")
 class ActivityScreenshotsTest {
     @get:Rule
     val paparazzi = Paparazzi()
