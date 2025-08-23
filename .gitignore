@@ -1,0 +1,13 @@
+# Ignore build outputs
+bin/
+gen/
+
+# IntelliJ/Android Studio files
+*.iml
+
+# macOS
+.DS_Store
+
+# Android project properties
+project.properties
+
