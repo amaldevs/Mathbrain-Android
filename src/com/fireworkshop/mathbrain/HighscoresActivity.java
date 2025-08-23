@@ -1,6 +1,11 @@
 package com.fireworkshop.mathbrain;
 
-import com.google.android.gms.ads.*;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +18,7 @@ import android.content.Intent;
 
 public class HighscoresActivity extends AppCompatActivity {
 
-    private InterstitialAd interstitial;
+    private InterstitialAd mInterstitialAd;
     private AdView adView;
         LinearLayout layout;
         String n1, n2, n3, n4, n5, n, s1, s2, s3,s4,s5, s;
@@ -124,17 +129,28 @@ public class HighscoresActivity extends AppCompatActivity {
     }
 
     private void loadInterstiatialAd(String adid) {
-        interstitial = new InterstitialAd(this);
-        interstitial.setAdUnitId(adid);
-
         AdRequest adRequest = new AdRequest.Builder().build();
+        InterstitialAd.load(
+            this,
+            adid,
+            adRequest,
+            new InterstitialAdLoadCallback() {
+                @Override
+                public void onAdLoaded(InterstitialAd interstitialAd) {
+                    mInterstitialAd = interstitialAd;
+                }
 
-        interstitial.loadAd(adRequest);
+                @Override
+                public void onAdFailedToLoad(LoadAdError loadAdError) {
+                    mInterstitialAd = null;
+                }
+            });
     }
 
     public void displayInterstitial() {
-        if (interstitial.isLoaded()) {
-            interstitial.show();
+        if (mInterstitialAd != null) {
+            mInterstitialAd.show(this);
+            mInterstitialAd = null;
         }
     }
 
