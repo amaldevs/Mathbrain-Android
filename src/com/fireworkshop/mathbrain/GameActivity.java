@@ -6,6 +6,7 @@ import com.google.android.gms.ads.*;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,8 +23,8 @@ public class GameActivity extends AppCompatActivity {
 	LinearLayout layout;
 	
 	public static final String TotalTime = "com.fireworkshop.mathbrain.totaltime";
-	public static final String Wrong = "com.fireworkshop.mathbrain.wrong";
-	private Handler handler= new Handler();
+        public static final String Wrong = "com.fireworkshop.mathbrain.wrong";
+        private Handler handler= new Handler(Looper.getMainLooper());
 	int i,finished,result;
 	long ct;
 	String total;

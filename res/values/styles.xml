@@ -28,6 +28,12 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:typeface">sans</item>
     </style>
+
+    <style name="Theme.Mathbrain.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/black</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splashscreen</item>
+        <item name="postSplashScreenTheme">@style/AppTheme</item>
+    </style>
     
     
     <dimen name="hsSize">20sp</dimen>
