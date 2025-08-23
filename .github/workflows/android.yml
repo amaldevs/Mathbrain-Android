@@ -14,6 +14,8 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           cache: gradle
+      - name: Run lint
+        run: ./gradlew lint
       - name: Run unit tests
         run: ./gradlew test
       - name: Run screenshot tests
