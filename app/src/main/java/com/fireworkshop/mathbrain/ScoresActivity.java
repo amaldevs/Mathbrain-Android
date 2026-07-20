@@ -226,7 +226,7 @@ public class ScoresActivity extends AppCompatActivity {
 
         @Override
         public boolean onSupportNavigateUp() {
-                onBackPressed();
+                getOnBackPressedDispatcher().onBackPressed();
                 return true;
         }
 

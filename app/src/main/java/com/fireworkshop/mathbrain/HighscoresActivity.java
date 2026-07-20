@@ -8,6 +8,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 import android.os.Bundle;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +29,13 @@ public class HighscoresActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_highscores);
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                displayInterstitial();
+                finish();
+            }
+        });
         admob("ca-app-pub-3981454940982694/5356012364");
         repository = new HighScoreRepository(this);
         first=(TextView)findViewById(R.id.first);
@@ -154,13 +162,6 @@ public class HighscoresActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        displayInterstitial();
-        super.onBackPressed();
-    }
-
-
     private void admob(String adid) {
         adView = new AdView(this);
         adView.setAdSize(AdSize.BANNER);
@@ -188,7 +189,7 @@ public class HighscoresActivity extends AppCompatActivity {
 
         @Override
         public boolean onSupportNavigateUp() {
-                onBackPressed();
+                getOnBackPressedDispatcher().onBackPressed();
                 return true;
         }
 
