@@ -1,0 +1,12 @@
+<resources>
+    <dimen name="hsSize">45sp</dimen>
+    <dimen name="text20">50sp</dimen>
+    <dimen name="text24">60sp</dimen>
+    <dimen name="text30">80sp</dimen>
+    <dimen name="mainHeading">120sp</dimen>
+    <dimen name="activityHeading">40sp</dimen>
+    <dimen name="buttonSize">80dp</dimen>
+    <dimen name="mainLayoutHeight">700dp</dimen>
+    <dimen name="mainLayoutWeight">500dp</dimen>
+    <dimen name="appNameActivity">30sp</dimen>
+</resources>

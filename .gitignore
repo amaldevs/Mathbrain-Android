@@ -1,13 +1,19 @@
-# Ignore build outputs
-bin/
-gen/
+# Gradle
+.gradle/
+build/
 
-# IntelliJ/Android Studio files
+# Local configuration
+local.properties
+
+# IDE
+.idea/
 *.iml
+.classpath
+.project
 
-# macOS
+# OS
 .DS_Store
 
-# Android project properties
-project.properties
-
+# Legacy build outputs
+bin/
+gen/
