@@ -1,0 +1,19 @@
+# Gradle
+.gradle/
+build/
+
+# Local configuration
+local.properties
+
+# IDE
+.idea/
+*.iml
+.classpath
+.project
+
+# OS
+.DS_Store
+
+# Legacy build outputs
+bin/
+gen/

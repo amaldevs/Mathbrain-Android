@@ -1,0 +1,8 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Android 15+ enforces edge-to-edge for apps targeting SDK 35+. Opt out
+         until the layouts handle window insets properly. -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat">
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
+</resources>

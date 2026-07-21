@@ -1,0 +1,38 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base application theme. API-level specific overrides live in
+         res/values-vXX/styles.xml. -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat" />
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:buttonStyle">@style/buttonSt</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:background">@color/black</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="buttonSt" parent="@android:style/Widget.Button">
+        <item name="android:background">@color/red</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="Theme.Mathbrain.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/black</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splashscreen</item>
+        <item name="postSplashScreenTheme">@style/AppTheme</item>
+    </style>
+
+    <dimen name="hsSize">20sp</dimen>
+    <dimen name="text20">20sp</dimen>
+    <dimen name="text24">22sp</dimen>
+    <dimen name="text30">23sp</dimen>
+    <dimen name="mainHeading">60sp</dimen>
+    <dimen name="activityHeading">40sp</dimen>
+    <dimen name="buttonSize">40dp</dimen>
+    <dimen name="mainLayoutHeight">289dp</dimen>
+    <dimen name="mainLayoutWeight">232dp</dimen>
+    <dimen name="appNameActivity">15sp</dimen>
+</resources>
